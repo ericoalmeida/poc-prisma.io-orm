@@ -1,7 +1,7 @@
 @startuml courses
 
 entity courses{
-  * id: uuid <<generated>> 
+  * id: uuid <<generated>> <<PK>> 
   --
   * name: text
   * description: text
