@@ -1,0 +1,26 @@
+@startuml courses
+
+entity orders{
+  * id: uuid <<generated>> <<PK>>
+  --
+  * customer_id: uuid
+  * total: number
+  * date: datetime
+    created_at: datetime
+    updated_at: datetime
+}
+
+entity order_items{
+  * id: uuid <<generated>> <<PK>>
+  --
+  * order_id: uuid <<FK>>
+  * product_id: uuid <<FK>>
+  * amount: number
+  * total: number
+    created_at: datetime
+    updated_at: datetime
+}
+
+orders||--|{order_items
+
+@enduml
