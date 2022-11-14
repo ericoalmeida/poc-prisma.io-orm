@@ -1,0 +1,13 @@
+@startuml courses
+
+entity courses{
+  * id: uuid <<generated>> 
+  --
+  * name: text
+  * description: text
+  * duration: number
+    created_at: datetime
+    updated_at: datetime
+}
+
+@enduml
