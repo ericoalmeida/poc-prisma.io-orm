@@ -17,3 +17,50 @@ model Courses {
 
   @@map("courses")
 }
+
+model Customers {
+  id         String   @id @default(uuid())
+  name       String
+  orders     Orders[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("customers")
+}
+
+model Products {
+  id         String       @id @default(uuid())
+  name       String
+  created_at DateTime     @default(now())
+  updated_at DateTime     @default(now())
+  OrderItems OrderItems[]
+
+  @@map("products")
+}
+
+model Orders {
+  id          String       @id @default(uuid())
+  Customers   Customers    @relation(fields: [customer_id], references: [id])
+  customer_id String
+  total       Float
+  date        DateTime     @default(now())
+  OrderItems  OrderItems[]
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @default(now())
+
+  @@map("orders")
+}
+
+model OrderItems {
+  id         String   @id @default(uuid())
+  orders     Orders   @relation(fields: [order_id], references: [id])
+  order_id   String
+  products   Products @relation(fields: [product_id], references: [id])
+  product_id String
+  amount     Int
+  total      Float
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("order_items")
+}

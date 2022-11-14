@@ -1,9 +1,17 @@
 @startuml courses
 
+entity customers{
+  * id: uuid <<generated>> <<PK>>
+}
+
+entity products{
+  * id: uuid <<generated>> <<PK>>
+}
+
 entity orders{
   * id: uuid <<generated>> <<PK>>
   --
-  * customer_id: uuid
+  * customer_id: uuid <<FK>>
   * total: number
   * date: datetime
     created_at: datetime
@@ -21,6 +29,8 @@ entity order_items{
     updated_at: datetime
 }
 
+customers||--|{orders
 orders||--|{order_items
+order_items||--||products
 
 @enduml
