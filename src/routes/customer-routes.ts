@@ -3,11 +3,18 @@ import { Router } from "express";
 import { createCustomer } from "../customers/create-customer";
 import { findAllCustomers } from "../customers/find-all-customers";
 import { findCustomer } from "../customers/find-customer";
+import { updateCustomer } from "../customers/update-customer";
 
 const customerRoutes = Router()
 
 customerRoutes.post('/customer', async (request, response) => {
   const customer = await createCustomer(request.body)
+  
+  return response.json(customer)
+})
+
+customerRoutes.put('/customer/:id', async (request, response) => {
+  const customer = await updateCustomer(request.params.id, request.body)
   
   return response.json(customer)
 })
