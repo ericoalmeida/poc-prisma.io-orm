@@ -1,0 +1,11 @@
+@startuml customer
+
+entity Customer {
+  * id: uuid <<generated>> <<Pk>>
+  --
+  * name: string
+    created_at: datetime
+    updated_at: datetime
+}
+
+@enduml
