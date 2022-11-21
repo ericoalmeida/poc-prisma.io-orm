@@ -1,0 +1,11 @@
+@startuml product
+
+entity Product {
+  * id: uuid <<generated>> <<pk>>
+  --
+  * name: string
+    created_at: datetime
+    updated_at: datetime
+}
+
+@enduml
