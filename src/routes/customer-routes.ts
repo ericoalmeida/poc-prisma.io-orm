@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { createCustomer } from "../customers/create-customer";
+import { deleteCustomer } from "../customers/delete-customer";
 import { findAllCustomers } from "../customers/find-all-customers";
 import { findCustomer } from "../customers/find-customer";
 import { updateCustomer } from "../customers/update-customer";
@@ -15,6 +16,12 @@ customerRoutes.post('/customer', async (request, response) => {
 
 customerRoutes.put('/customer/:id', async (request, response) => {
   const customer = await updateCustomer(request.params.id, request.body)
+  
+  return response.json(customer)
+})
+
+customerRoutes.delete('/customer/:id', async (request, response) => {
+  const customer = await deleteCustomer(request.params.id)
   
   return response.json(customer)
 })
