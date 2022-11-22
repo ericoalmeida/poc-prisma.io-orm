@@ -29,11 +29,11 @@ model Customers {
 }
 
 model Products {
-  id         String       @id @default(uuid())
-  name       String
-  created_at DateTime     @default(now())
-  updated_at DateTime     @default(now())
-  OrderItems OrderItems[]
+  id          String       @id @default(uuid())
+  name        String
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @default(now())
+  order_items OrderItems[]
 
   @@map("products")
 }
@@ -44,7 +44,7 @@ model Orders {
   customer_id String
   total       Float
   date        DateTime     @default(now())
-  OrderItems  OrderItems[]
+  items       OrderItems[]
   created_at  DateTime     @default(now())
   updated_at  DateTime     @default(now())
 

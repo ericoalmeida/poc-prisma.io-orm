@@ -23,7 +23,7 @@ export const createOrder = (data: Order) => {
       date: new Date(date),
       total,
       customer_id,
-      OrderItems: {
+      items: {
         create: items,
       },
     },
