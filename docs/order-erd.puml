@@ -1,17 +1,17 @@
 @startuml courses
 
 entity customers{
-  * id: uuid <<generated>> <<PK>>
+  * id: uuid <<generated>> <<pk>>
 }
 
 entity products{
-  * id: uuid <<generated>> <<PK>>
+  * id: uuid <<generated>> <<pk>>
 }
 
 entity orders{
-  * id: uuid <<generated>> <<PK>>
+  * id: uuid <<generated>> <<pk>>
   --
-  * customer_id: uuid <<FK>>
+  * customer_id: uuid <<fk>>
   * total: number
   * date: datetime
     created_at: datetime
@@ -19,10 +19,10 @@ entity orders{
 }
 
 entity order_items{
-  * id: uuid <<generated>> <<PK>>
+  * id: uuid <<generated>> <<pk>>
   --
-  * order_id: uuid <<FK>>
-  * product_id: uuid <<FK>>
+  * order_id: uuid <<fk>>
+  * product_id: uuid <<fk>>
   * amount: number
   * total: number
     created_at: datetime
