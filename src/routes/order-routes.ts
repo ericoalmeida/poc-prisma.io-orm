@@ -5,31 +5,30 @@ import { deleteOrder } from "../orders/delete-order";
 import { findAllOrders } from "../orders/find-all-orders";
 import { findOrder } from "../orders/find-order";
 
-const orderRoutes = Router()
+const orderRoutes = Router();
 
-orderRoutes.post('/order', async (request, response) => {
-  const order = await createOrder(request.body)
+orderRoutes.post("/order", async (request, response) => {
+  const order = await createOrder(request.body);
 
-  return response.json(order)
-})
+  return response.json(order);
+});
 
-orderRoutes.get('/order/:id', async (request, response) => {
-  const orders = await findOrder(request.params.id)
+orderRoutes.get("/order/:id", async (request, response) => {
+  const orders = await findOrder(request.params.id);
 
-  return response.json(orders)
-})
+  return response.json(orders);
+});
 
-orderRoutes.delete('/order/:id', async (request, response) => {
-  const orders = await deleteOrder(request.params.id)
+orderRoutes.delete("/order/:id", async (request, response) => {
+  const orders = await deleteOrder(request.params.id);
 
-  return response.json(orders)
-})
+  return response.json(orders);
+});
 
-orderRoutes.get('/orders', async (request, response) => {
-  const orders = await findAllOrders()
+orderRoutes.get("/orders", async (request, response) => {
+  const orders = await findAllOrders();
 
-  return response.json(orders)
-})
-
+  return response.json(orders);
+});
 
 export { orderRoutes };
