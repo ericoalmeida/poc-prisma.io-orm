@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { courseRoutes } from "./course-routes";
 import { customerRoutes } from "./customer-routes";
+import { dbTransactionRoutes } from "./db-transactions-routes";
 import { orderRoutes } from "./order-routes";
 import { productRoutes } from "./product-routes";
 
@@ -15,5 +16,6 @@ routes.use(courseRoutes)
 routes.use(customerRoutes)
 routes.use(productRoutes)
 routes.use(orderRoutes)
+routes.use(dbTransactionRoutes)
 
 export { routes };
