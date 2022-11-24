@@ -5,6 +5,7 @@ import { customerRoutes } from "./customer-routes";
 import { dbTransactionRoutes } from "./db-transactions-routes";
 import { orderRoutes } from "./order-routes";
 import { productRoutes } from "./product-routes";
+import { queryRawRoutes } from "./query-raw-routes";
 
 const routes = Router()
 
@@ -17,5 +18,6 @@ routes.use(customerRoutes)
 routes.use(productRoutes)
 routes.use(orderRoutes)
 routes.use(dbTransactionRoutes)
+routes.use(queryRawRoutes)
 
 export { routes };
