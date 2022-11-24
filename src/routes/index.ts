@@ -4,6 +4,7 @@ import { courseRoutes } from "./course-routes";
 import { customerRoutes } from "./customer-routes";
 import { dbTransactionRoutes } from "./db-transactions-routes";
 import { orderRoutes } from "./order-routes";
+import { paginationRoutes } from "./pagination-routes";
 import { productRoutes } from "./product-routes";
 import { queryRawRoutes } from "./query-raw-routes";
 
@@ -19,5 +20,6 @@ routes.use(productRoutes)
 routes.use(orderRoutes)
 routes.use(dbTransactionRoutes)
 routes.use(queryRawRoutes)
+routes.use(paginationRoutes)
 
 export { routes };
