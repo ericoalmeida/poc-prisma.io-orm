@@ -9,33 +9,53 @@ import { updateOrder } from "../orders/update-order";
 const orderRoutes = Router();
 
 orderRoutes.post("/order", async (request, response) => {
-  const order = await createOrder(request.body);
+  try {
+    const order = await createOrder(request.body);
 
-  return response.json(order);
+    return response.json(order);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
 });
 
 orderRoutes.get("/order/:id", async (request, response) => {
-  const orders = await findOrder(request.params.id);
+  try {
+    const orders = await findOrder(request.params.id);
 
-  return response.json(orders);
+    return response.json(orders);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
 });
 
 orderRoutes.put("/order/:id", async (request, response) => {
-  const orders = await updateOrder(request.params.id, request.body);
+  try {
+    const orders = await updateOrder(request.params.id, request.body);
 
-  return response.json(orders);
+    return response.json(orders);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
 });
 
 orderRoutes.delete("/order/:id", async (request, response) => {
-  const orders = await deleteOrder(request.params.id);
+  try {
+    const orders = await deleteOrder(request.params.id);
 
-  return response.json(orders);
+    return response.json(orders);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
 });
 
 orderRoutes.get("/orders", async (request, response) => {
-  const orders = await findAllOrders();
+  try {
+    const orders = await findAllOrders();
 
-  return response.json(orders);
+    return response.json(orders);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
 });
 
 export { orderRoutes };

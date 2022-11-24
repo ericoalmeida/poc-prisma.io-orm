@@ -6,38 +6,56 @@ import { findAllCourses } from "../courses/find-all-courses";
 import { findCourse } from "../courses/find-course";
 import { updateCourse } from "../courses/update-course";
 
-const courseRoutes = Router()
+const courseRoutes = Router();
 
-courseRoutes.post('/course', async (request, response) => {
-  const course = await createCourse(request.body)
+courseRoutes.post("/course", async (request, response) => {
+  try {
+    const course = await createCourse(request.body);
 
-  return response.json(course)
-})
+    return response.json(course);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
+});
 
-courseRoutes.put('/course/:id', async (request, response) => {
-  const course = await updateCourse(request.params.id, request.body)
+courseRoutes.put("/course/:id", async (request, response) => {
+  try {
+    const course = await updateCourse(request.params.id, request.body);
 
-  return response.json(course)
-})
+    return response.json(course);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
+});
 
+courseRoutes.delete("/course/:id", async (request, response) => {
+  try {
+    const course = await deleteCourse(request.params.id);
 
-courseRoutes.delete('/course/:id', async (request, response) => {
-  const course = await deleteCourse(request.params.id)
+    return response.json(course);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
+});
 
-  return response.json(course)
-})
+courseRoutes.get("/course/:id", async (request, response) => {
+  try {
+    const course = await findCourse(request.params.id);
 
-courseRoutes.get('/course/:id', async (request, response) => {
-  const course = await findCourse(request.params.id)
+    return response.json(course);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
+});
 
-  return response.json(course)
-})
+courseRoutes.get("/courses", async (request, response) => {
+  try {
+    const course = await findAllCourses();
 
-courseRoutes.get('/courses', async (request, response) => {
-  const course = await findAllCourses()
-
-  return response.json(course)
-})
-
+    return response.json(course);
+  } catch (error) {
+    return response.status(400).json({ error });
+  }
+});
 
 export { courseRoutes };
